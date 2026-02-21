@@ -5,3 +5,4 @@ You can use it by two methods
 you can visit https://habittrackmania.my.canva.site/ and use it directly
 2.Locally
 Download the coad and create an .html file and paste the code and use locally
+![Uploading image.png…]()
