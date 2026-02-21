@@ -45,7 +45,7 @@ You can use the web version here:
 3. Track progress daily.
 
 ### Method 2 — Run Locally
-#Andriod app will be released soon
+
 
 1. Download or clone this repository:
 
@@ -56,7 +56,7 @@ You can use the web version here:
 3. Start tracking habits.
 
 ---
-
+##Andriod app will be released soon
 ##  Tech Stack
 
 * **HTML** — Structure
