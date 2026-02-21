@@ -45,6 +45,7 @@ You can use the web version here:
 3. Track progress daily.
 
 ### Method 2 — Run Locally
+#Andriod app will be released soon
 
 1. Download or clone this repository:
 
