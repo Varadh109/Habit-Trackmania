@@ -49,7 +49,7 @@ You can use the web version here:
 1. Download or clone this repository:
 
    ```bash
-   git clone https://github.com/your-username/Habit-Trackmania.git
+   git clone https://github.com/Varadh109/Habit-Trackmania.git
    ```
 2. Open `Habit Trackmania  v14 final.html` in your browser.
 3. Start tracking habits.
