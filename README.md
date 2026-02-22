@@ -22,7 +22,7 @@ Built using **HTML, CSS, and JavaScript**, this project focuses on minimal desig
 
 You can use the web version here:
 
- https://habittrackmania.my.canva.site/
+https://rajath-ar.github.io/Habit-Trackmania/
 
 ---
 
@@ -40,7 +40,7 @@ You can use the web version here:
 
 ### Method 1 — Online
 
-1. Open the live demo link.
+1. Open the live link - https://rajath-ar.github.io/Habit-Trackmania/
 2. Add your habits.
 3. Track progress daily.
 
@@ -50,9 +50,9 @@ You can use the web version here:
 1. Download or clone this repository:
 
    ```bash
-   git clone https://github.com/Varadh109/Habit-Trackmania.git
+   git clone https://github.com/Rajath-AR/Habit-Trackmania.git
    ```
-2. Open `Habit Trackmania  v14 final.html` in your browser.
+2. Open `index.html` in your browser.
 3. Start tracking habits.
 
 ---
@@ -76,17 +76,14 @@ The goal of Habit Trackmania is to create a distraction-free habit tracker that 
 ```
 Habit-Trackmania/
 │
-├── Habit Trackmania  v14 final.html
+├── index.html
 └── README.md
 ```
 
 ---
 
 ##  Future Improvements
-
-* Monthly & yearly analytics
-* Habit streak tracking
-* Data saving with localStorage
+* Android app
 * Mobile optimization
 * Export progress data
 
