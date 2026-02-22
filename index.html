@@ -387,8 +387,12 @@
       return d;
     }
 
+    // FIXED: Use local date string (YYYY-MM-DD) instead of UTC
     function formatDate(date) {
-      return date.toISOString().split('T')[0];
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
     }
 
     function getWeekDates(startDate) {
@@ -443,8 +447,9 @@
       return completions.some(c => c.habit_name === habitName && c.date === dateStr && c.completed);
     }
 
+    // FIXED: Accept string or Date
     function getCompletionRecord(habitName, date) {
-      const dateStr = formatDate(date);
+      const dateStr = typeof date === 'string' ? date : formatDate(date);
       return completions.find(c => c.habit_name === habitName && c.date === dateStr);
     }
 
@@ -452,12 +457,14 @@
     function renderDateHeaders() {
       const container = document.getElementById('date-headers');
       const weekDates = getWeekDates(currentPeriodStart);
-      const today = formatDate(new Date());
+      // FIXED: Use local today string
+      const todayStr = formatDate(new Date());
       
       container.innerHTML = `
         <div class="text-sm font-medium" style="color: rgba(255,255,255,0.6);">Habit</div>
         ${weekDates.map(date => {
-          const isToday = formatDate(date) === today;
+          const dateStr = formatDate(date);
+          const isToday = dateStr === todayStr;
           return `
             <div class="text-center">
               <div class="text-xs" style="color: rgba(255,255,255,0.4);">${getDayName(date)}</div>
@@ -511,6 +518,7 @@
       const container = document.getElementById('monthly-grid');
       const uniqueHabits = getUniqueHabits();
       const monthDates = getMonthDates(currentPeriodStart);
+      const todayStr = formatDate(new Date());
 
       if (uniqueHabits.length === 0) {
         container.innerHTML = '<p class="text-sm text-center py-8" style="color: rgba(255,255,255,0.4);">Add habits to start tracking!</p>';
@@ -526,8 +534,7 @@
               ${monthDates.map(date => {
                 const completed = isCompleted(habit, date);
                 const dateStr = formatDate(date);
-                const today = formatDate(new Date());
-                const isToday = dateStr === today;
+                const isToday = dateStr === todayStr;
                 return `
                   <div 
                     class="day-cell ${completed ? 'checked' : ''}"
@@ -784,7 +791,8 @@
     function toggleCompletion(habitName, dateStr) {
       if (isLoading) return;
 
-      const existing = getCompletionRecord(habitName, new Date(dateStr));
+      // FIXED: Pass dateStr directly (it's already a string)
+      const existing = getCompletionRecord(habitName, dateStr);
       
       if (existing) {
         isLoading = true;
@@ -993,6 +1001,5 @@
 
     init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d158f93905164e0',t:'MTc3MTY2OTc0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d1b981ab0f779f8',t:'MTc3MTczMzAxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
